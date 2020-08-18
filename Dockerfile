@@ -1,3 +1,3 @@
 FROM registry.redhat.io/rhel7-atomic
 RUN sh 
-RUN sleep 600
+RUN tailf /dev/null
