@@ -1,1 +1,7 @@
-FROM registry.redhat.io/rhscl/python-36-rhel7
+FROM registry.redhat.io/rhel7-atomic
+RUN mkdir -p /data/USERNAME/upload
+RUN chown -R root:sftp_users /data/USERNAME
+RUN chown -R USERNAME:sftp_users /data/USERNAME/upload
+RUN echo "Match Group sftp_users" >> /etc/ssh/sshd_config
+RUN echo "ChrootDirectory /data/%u" >> /etc/ssh/sshd_config
+RUN echo "ForceCommand internal-sftp" >> /etc/ssh/sshd_config 
