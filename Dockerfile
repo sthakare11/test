@@ -1,6 +1,7 @@
 FROM registry.redhat.io/rhel7-atomic
 RUN mkdir -p /data/USERNAME/upload
-RUN microdnf --enablerepo=rhel-7-server-rpms install groupadd
+RUN microdnf --enablerepo=rhel-7-server-rpms install shadow-utils ;\
+    adduser elastic
 RUN groupadd sftp_users
 RUN chown -R root:sftp_users /data/USERNAME
 RUN chown -R USERNAME:sftp_users /data/USERNAME/upload
