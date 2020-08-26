@@ -2,7 +2,7 @@ FROM registry.redhat.io/rhel7-atomic
 RUN mkdir -p /data
 RUN chmod 701 /data
 RUN mkdir -p /data/USERNAME/upload
-RUN microdnf --enablerepo=rhel-7-server-rpms install shadow-utils passwd ;\
+RUN microdnf --enablerepo=rhel-7-server-rpms install shadow-utils passwd openssh-server openssh-clients;\
     useradd sftp_users 
 RUN useradd -g sftp_users -d /upload -s /sbin/nologin USERNAME
 RUN echo "RedHat1new" |passwd --stdin USERNAME
